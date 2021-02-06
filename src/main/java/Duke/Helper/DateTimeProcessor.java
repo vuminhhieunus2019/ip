@@ -33,7 +33,6 @@ public class DateTimeProcessor {
             }
             int hour = timeInt / 100;
             int minute = timeInt % 100;
-            assert (hour == 24 && minute == 0) || (hour < 24 && minute < 60) : "Wrong format for time";
             if (hour == 24) {
                 if (minute == 0) {
                     return "12:00am";

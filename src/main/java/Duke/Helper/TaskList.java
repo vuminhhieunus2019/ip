@@ -118,13 +118,11 @@ public class TaskList {
         assert keywords.length != 0 : "There must be at least 1 keyword";
         ArrayList<Task> result = new ArrayList<>();
         for (String keyword : keywords) {
-            for (Task task : list) {
+            list.stream().filter(task -> {
                 String description = task.getDescription();
                 String time = task.getTime();
-                if (description.contains(keyword) || time.contains(keyword)) {
-                    result.add(task);
-                }
-            }
+                return description.contains(keyword) || time.contains(keyword);
+            }).forEach(result::add);
         }
         return result;
     }
